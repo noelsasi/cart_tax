@@ -20,19 +20,19 @@ export const Products: IProduct[] = [
     price: "0.85",
   },
   {
-    name: "imported box of chocolates",
+    name: "imported box of chocolates at 10.00",
     category: "food",
     isImported: true,
     price: "10.00",
   },
   {
-    name: "imported bottle of perfume",
+    name: "imported bottle of perfume at 47.50",
     category: "fashion",
     isImported: true,
     price: "47.50",
   },
   {
-    name: "imported bottle of perfume",
+    name: "imported bottle of perfume at 27.99",
     category: "fashion",
     isImported: true,
     price: "27.99",
@@ -50,7 +50,7 @@ export const Products: IProduct[] = [
     price: "9.75",
   },
   {
-    name: "imported box of chocolates",
+    name: "imported box of chocolates at 11.25",
     category: "food",
     isImported: true,
     price: "11.25",

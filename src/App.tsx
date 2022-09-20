@@ -25,7 +25,7 @@ export default function App() {
 
     let currentTax = 0,
       importTax = 0,
-      taxPrice: number = parseFloat(product.price);
+      productPrice: number = parseFloat(product.price);
 
     //  books, food, and medical products are exempt from sales tax.
     const includeTax = !nonTaxCategory.includes(product?.category);
@@ -33,15 +33,13 @@ export default function App() {
     //  Basic sales tax is applicable at a rate of 10% on all goods.
     const salesTax = 10;
     if (includeTax) {
-      currentTax = (salesTax / 100) * parseFloat(product.price);
-      taxPrice += parseFloat(currentTax.toFixed(2));
+      currentTax = (salesTax / 100) * productPrice;
     }
 
     //  additional sales tax applicable on all imported goods at a rate of 5%,
     if (product.isImported) {
       const importedSalesTax = 5;
-      importTax = (importedSalesTax / 100) * parseFloat(product.price);
-      taxPrice += parseFloat(importTax.toFixed(2));
+      importTax = (importedSalesTax / 100) * productPrice;
     }
 
     const totalTax =
@@ -50,7 +48,7 @@ export default function App() {
     //  The sales tax is rounded up to the nearest 0.05 amounts.
     const roundup = 0.05;
     const appliedTax = (Math.round(totalTax / roundup) * roundup).toFixed(2);
-    const cartPrice = (Math.round(taxPrice / roundup) * roundup).toFixed(2);
+    const cartPrice = (parseFloat(appliedTax) + productPrice).toFixed(2);
 
     if (product?.name) {
       setCart((prev) => [
@@ -85,7 +83,7 @@ export default function App() {
       (accumulator, current) => accumulator + parseFloat(current.appliedTax),
       0
     );
-
+    console.log(total, "total");
     return {
       taxTotal: taxTotal.toFixed(2),
       total: total.toFixed(2),
